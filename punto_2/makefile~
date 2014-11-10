@@ -1,0 +1,14 @@
+all: estado_t.pdf 
+
+estado_t.pdf: estado_t.dat
+	python graficas.py estado_t.dat
+
+estado_t.dat:particle_in_field.x graficas.py
+	./particle_in_field.x 1 30
+
+sod_test.x: euler.c
+	cc euler.c -o sod_test.x -lm
+
+
+clean:
+	rm -f *.pdf
